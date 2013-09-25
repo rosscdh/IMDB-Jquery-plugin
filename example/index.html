@@ -1,0 +1,48 @@
+<html>
+<head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/sugar/1.3.9/sugar.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js"></script>
+
+    <script type="text/javascript" src="/src/imdb.jquery.plugin.js"></script>
+    <div class="container">
+        <div class="jumbotron" id="imdb_movie">
+            <h1>Single</h1>
+        </div>
+
+        <div class="jumbotron" id="imdb_movie_by_key">
+            <h1>Multiple</h1>
+        </div>
+
+        <div class="jumbotron" id="imdb_movie_custom_display_template">
+            <h1>Multiple with Custom Display</h1>
+        </div>
+    </div>
+
+    <script type="text/javascript" id="imdb_example">
+    $(document).ready(function () {
+
+        $( "#imdb_movie" ).imdb({
+            'movie_title': 'Jurassic Park'
+        });
+
+        $( "#imdb_movie_by_key" ).imdb({
+            'movie_title': ['Shawshank', 'Rocky', 'Titanic']
+        });
+
+        $( "#imdb_movie_custom_display_template" ).imdb({
+            'movie_title': ['Shawshank', 'Rocky', 'Titanic'],
+            'display_template': function () {
+                return '<hr/><a href="http://www.imdb.com/title/{{ imdbID }}/" target="_blank"><img alt="{{ Title }}" src="{{ Poster }}" style="width:75px;height:75px;" class="imdb_image">{{ Title }}</a>';
+            }
+        });
+
+    });
+    </script>
+</body>
+</html>
